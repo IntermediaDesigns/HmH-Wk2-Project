@@ -1,33 +1,25 @@
 // A word is chosen at random from a pool of, at minimum, five words.
-let userGuess = true;
+let playing = true;
 let guesses = 3;
-let wrongGuess;
 let playAgain = true;
 
+
 // Start Game 
-while (playing) {
-       starting = prompt(
-              "I'm thinking of a word. Would you like to guess a letter?"
-            );
-       }
-
-
 // Random Words
-function randomWord(){
-       let word = "";
-       let random = Math.ceil(math.random()*5);
+let word1 = 'javascript';
+let word2 = 'object';
+let word3 = 'boolean';
+let word4 = 'variable';
+let word5 = 'waffles';
 
-              if(random === 1){word = "javascript"}
-              if(random === 1){word = "object"}
-              if(random === 1){word = "boolean"}
-              if(random === 1){word = "variable"}
-              if(random === 1){word = "waffles"}
-       return word;
-}
+// Select random word
+let word = eval('word' + (Math.floor(Math.random() * 5) + 1));
+
+
 
 // Censor letters
 // The following characters are automatically populated in the chosen random word: 'r', 's', 't', 'l', 'n', 'e'.
-function censorLetters(str){
+/*function censorLetters(str){
        let censorSTR = "";
 
        for(let i = 0; i < str.length; i++){
@@ -45,9 +37,28 @@ function censorLetters(str){
                      }
        }
        return censorSTR;
+}*/
+
+let censored = '❓'.repeat(word.length);
+
+while (censored.includes('*')) {
+    // Player's guess
+    let guess = prompt("I'm thinking of a word. " + 'Censored word: ' + censored + '\nWould you like to guess a letter?');
+
+    // Check if guess is in word
+    if (word.includes(guess)) {
+        // Reveal guessed letter
+        for (let i = 0; i < word.length; i++) {
+            if (word[i] === guess) {
+                censored = censored.substr(0, i) + guess + censored.substr(i + 1);
+            }
+        }
+    } else {
+        alert('Sorry, the word does not include the letter ' + guess + '.');
+    }
 }
 
-
+alert('Congratulations! You guessed the word: ' + word);
 // Player guessing
 // A player types in a letter as a guess, if they are correct the letter is filled in and if they are incorrect one rope emoji appears in the prompt.
 /* let remainingLetters = word.length;
