@@ -16,6 +16,7 @@ while (true) {
   else if (randomWord === 4) word = word4
   else if (randomWord === 5) word = word5
 
+  // Start the game
   // Player's guess
   let censored = censorLetters(word)
   let wrongGuess = 0
