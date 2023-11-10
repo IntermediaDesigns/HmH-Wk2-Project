@@ -9,11 +9,6 @@ while (true) {
 // Select random word
        let word = eval('word' + (Math.floor(Math.random() * 5) + 1));
 
-
-
-// # of wrong guesses
-       let wrongGuesses = 0;
-
 // The following characters are automatically populated in the chosen random word: 'r', 's', 't', 'l', 'n', 'e'.
 
        let censored = '❓'.repeat(word.length);
@@ -44,6 +39,9 @@ while (true) {
     }
 }
 
+// # of wrong guesses
+let wrongGuesses = 3;
+
 if (wrongGuesses === 3) {
        alert('Game over! ❌ The word was: ' + word);
    } else {
@@ -51,7 +49,7 @@ if (wrongGuesses === 3) {
    }
 
 // Ask player if they want to play again
-var playAgain = prompt('Do you want to play again? (yes/no)');
+let playAgain = prompt('Do you want to play again? (yes/no)');
 if (playAgain !== 'yes') {
     break;}
 
