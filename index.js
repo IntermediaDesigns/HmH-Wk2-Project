@@ -24,8 +24,7 @@ while (true) {
   while (censored.includes('❓')) {
     let guess = prompt(
       "I'm thinking of a word. 🤔" +
-        '\n\nWord to Guess: ' +
-        censored +
+        '\n\nWord to Guess: ' + censored +
         '\n\nWould you like to guess a letter?'
     )
 
