@@ -29,15 +29,37 @@ while (true) {
         '\n\nWould you like to guess a letter?'
     )
 
+  // The following characters are automatically populated in the chosen random word: 'r', 's', 't', 'l', 'n', 'e'.
+    function censorLetters (str) {
+      let censorSTR = ''
+
+      for (let i = 0; i < str.length; i++) {
+        if (
+          str[i] === 'r' ||
+          str[i] === 's' ||
+          str[i] === 't' ||
+          str[i] === 'l' ||
+          str[i] === 'n' ||
+          str[i] === 'e'
+        ) {
+          censorSTR += str[i]
+        } else {
+          censorSTR += '❓'
+        }
+      }
+      return censorSTR
+    }
+
+
     // Check if guess of the full word is correct or not
     if (guess === word) {
       censored = word
       break
     }
 
-    // Check if the letter is in word
+    // Check if the letter is in word and reveal guessed letter
     if (word.includes(guess)) {
-      // Reveal guessed letter
+      
       for (let i = 0; i < word.length; i++) {
         if (word[i] === guess) {
           censored = censored.substr(0, i) + guess + censored.substr(i + 1)
@@ -60,26 +82,7 @@ while (true) {
     alert('🎊 Congratulations! 🎊 \n\nYou guessed the word: ' + word)
   }
 
-  // The following characters are automatically populated in the chosen random word: 'r', 's', 't', 'l', 'n', 'e'.
-  function censorLetters (str) {
-    let censorSTR = ''
-
-    for (let i = 0; i < str.length; i++) {
-      if (
-        str[i] === 'r' ||
-        str[i] === 's' ||
-        str[i] === 't' ||
-        str[i] === 'l' ||
-        str[i] === 'n' ||
-        str[i] === 'e'
-      ) {
-        censorSTR += str[i]
-      } else {
-        censorSTR += '❓'
-      }
-    }
-    return censorSTR
-  }
+  
 
   // Ask player if they want to play again
   let playAgain = prompt('Do you want to play again? (yes/no)')
